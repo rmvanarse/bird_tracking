@@ -25,9 +25,13 @@ while True:
 	data = connection.recv(1024)
 	print("Recieved")
 	if not data:
+		f.close()
 		break
+	#print data
 	f.write(data)
+	print("Recieved & Written")
 
 print('Done Sending')
+
 connection.close()
 print("Success")
