@@ -12,6 +12,7 @@ port = 8000
 
 
 audio_s.connect((host, port))
+<<<<<<< HEAD
 audio_s.send("Connection Established")
 
 filename = 'TestFile'
@@ -25,6 +26,9 @@ while (l):
 f.close()
 print("Done Sending")
 
+=======
+audio_s.send("Test from Raspi")
+>>>>>>> 3c18be5616b982621a72b9011a6194190eb9df91
 
 audio_s.close()
 print("Success")

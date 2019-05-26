@@ -16,11 +16,18 @@ audio_s.bind((server_host, port))
 
 audio_s.listen(5)
 
+f = open('output', 'wb')
+print ("File Opened")
+
 while True:
 	connection, address = audio_s.accept()
 	print("Connection successful")
 	data = connection.recv(1024)
-	print("Recieved: ", repr(data))
+	print("Recieved")
+	if not data:
+		break
+	f.write(data)
 
-	print('Done Sending')
-	connection.close()
+print('Done Sending')
+connection.close()
+print("Success")
