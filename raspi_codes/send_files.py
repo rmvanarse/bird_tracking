@@ -12,7 +12,7 @@ port = 8000
 
 
 audio_s.connect((host, port))
-audio_s.send("Test")
+audio_s.send("Test from Raspi")
 
 audio_s.close()
 print("Success")
