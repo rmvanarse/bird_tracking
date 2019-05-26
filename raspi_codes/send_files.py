@@ -12,7 +12,19 @@ port = 8000
 
 
 audio_s.connect((host, port))
-audio_s.send("Test")
+audio_s.send("Connection Established")
+
+filename = 'TestFile'
+f = open(filename, 'rb')
+l = f.read(1024)
+
+while (l):
+	audio_s.send(l)
+	print("sent:", l)
+	l = f.read(1024)
+f.close()
+print("Done Sending")
+
 
 audio_s.close()
 print("Success")
