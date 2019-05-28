@@ -7,31 +7,29 @@ Test code for recieving audio file from Raspberry Pi
 
 import socket
 
+s = socket.socket()
+server_host = '192.168.1.8'
 port = 8000
 
-audio_s = socket.socket()
-server_host = '192.168.1.7'
+s.bind((server_host, port))
 
-audio_s.bind((server_host, port))
+filename = 'audio_copy.mp3'
 
-audio_s.listen(5)
-
-f = open('output', 'wb')
-print ("File Opened")
+f= open(filename, 'wb')
+s.listen(5)
 
 while True:
-	connection, address = audio_s.accept()
-	print("Connection successful")
-	data = connection.recv(1024)
+	conn, addr = s.accept()
+	print("Connection Recieved from ", addr)
+	print("Listening...")
+
+	l = conn.recv(1024)
+
+	while (l) :
+		f.write(l)
+		l = conn.recv(1024)
+
+	f.close()
 	print("Recieved")
-	if not data:
-		f.close()
-		break
-	#print data
-	f.write(data)
-	print("Recieved & Written")
-
-print('Done Sending')
-
-connection.close()
-print("Success")
+	conn.send("Completed")
+	conn.close()
