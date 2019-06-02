@@ -8,7 +8,7 @@ Test code for recieving audio file from Raspberry Pi
 import socket
 
 s = socket.socket()
-server_host = '192.168.1.6'
+server_host = '192.168.0.3'
 port = 8000
 
 s.bind((server_host, port))
