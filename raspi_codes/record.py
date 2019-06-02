@@ -8,7 +8,8 @@ Requires: souddevice, scipy
 
 import sounddevice as sd
 import numpy as np 
-import scipy.io.wavfile as wav 
+import scipy.io.wavfile as wav
+
 
 
 filename = 'recorded_audio'

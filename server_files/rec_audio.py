@@ -8,7 +8,7 @@ Test code for recieving audio file from Raspberry Pi
 import socket
 
 s = socket.socket()
-server_host = '192.168.1.8'
+server_host = '192.168.1.6'
 port = 8000
 
 s.bind((server_host, port))
@@ -31,5 +31,5 @@ while True:
 
 	f.close()
 	print("Recieved")
-	conn.send("Completed")
+	#conn.send("Completed")
 	conn.close()
