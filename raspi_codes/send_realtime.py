@@ -11,6 +11,7 @@ import numpy as np
 import scipy.io.wavfile as wav 
 
 import socket
+import time
 
 filename = 'recorded_audio'
 sample_rate = 40000
@@ -43,6 +44,9 @@ while True:
 	wav.write(filename+ str(i), sample_rate, recording)
 	f.close()
 
+	#Timestamp
+	timestamp = time.time()
+
 	#Send
 	f= open(filename + str(i), 'rb')
 	print("Sending...")
@@ -53,6 +57,8 @@ while True:
 		l = f.read(1024)
 	f.close()
 	print("Done sending: audio #"+ str(i+1))
+
+	print("Delay: ", (time.time() - timestamp), "s")
 	#audio_s.close()
 
 	#Random exit condition
